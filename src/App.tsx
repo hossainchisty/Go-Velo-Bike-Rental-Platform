@@ -14,6 +14,10 @@ import ListBike from "./pages/ListBike";
 import Pricing from "./pages/Pricing";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminBikes from "./pages/admin/AdminBikes";
+import AdminUsers from "./pages/admin/AdminUsers";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +38,19 @@ const App = () => (
           <Route path="/list-bike" element={<ListBike />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<FAQ />} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="bikes" element={<AdminBikes />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="rentals" element={<AdminDashboard />} />
+            <Route path="payments" element={<AdminDashboard />} />
+            <Route path="messages" element={<AdminDashboard />} />
+            <Route path="analytics" element={<AdminDashboard />} />
+            <Route path="settings" element={<AdminDashboard />} />
+          </Route>
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
