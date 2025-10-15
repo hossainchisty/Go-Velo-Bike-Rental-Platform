@@ -1,49 +1,62 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import { Search, MapPin, Shield, Award, Bike, Leaf, Users } from "lucide-react";
-import heroImage from "@/assets/hero-bike.jpg";
 import bikesCollection from "@/assets/bikes-collection.jpg";
 import happyRider from "@/assets/happy-rider.jpg";
+import heroImage from "@/assets/hero-bike.jpg";
+import Footer from "@/components/Footer";
+import Navigation from "@/components/Navigation";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Award, Bike, Leaf, MapPin, Search, Shield, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image + Smarter Gradient Overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-105 animate-slow-zoom"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
-        </div>
         
-        <div className="container relative z-10 animate-fade-in">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-              Find Your Perfect Bike
-              <span className="text-primary block mt-2">Anywhere in Germany</span>
+        </div>
+
+        {/* Hero Content */}
+        <div className="container relative z-10 text-center px-6 animate-fade-in-up">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)]">
+              Find Your <span className="text-primary">Perfect Bike</span>
+              <br />
+              <span className="bg-gradient-to-r from-primary to-green-400 bg-clip-text text-transparent drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)]">
+                Anywhere in Germany
+              </span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Connect with local bike owners. Rent bikes, e-bikes, and accessories with just a few clicks. Sustainable, affordable, community-driven.
+
+            <p className="mt-6 text-lg md:text-xl text-white/95 font-light leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+              Rent bikes, e-bikes, and accessories from trusted locals.
+              <br className="hidden md:block" />
+              Sustainable. Affordable. Community-driven.
             </p>
-            
-            {/* Search Bar */}
-            <div className="bg-card p-4 rounded-lg shadow-soft border border-border">
-              <div className="flex flex-col md:flex-row gap-3">
+
+            {/* White Glass Search Bar */}
+            <div className="mt-10 bg-white/25 backdrop-blur-2xl border border-white/50 shadow-xl p-5 rounded-2xl transition-all hover:bg-white/40">
+              <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="flex-1 relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  <Input 
-                    placeholder="Enter city (Berlin, Hamburg, Munich...)" 
-                    className="pl-10"
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-600" />
+                  <Input
+                    placeholder="Enter city (Berlin, Hamburg, Munich...)"
+                    className="pl-12 py-3 rounded-xl bg-white/60 border border-white/50 text-gray-800 placeholder:text-gray-600 focus:ring-2 focus:ring-primary/40 backdrop-blur-md"
                   />
                 </div>
-                <Button variant="hero" size="lg" className="md:w-auto" asChild>
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="rounded-xl text-base font-medium px-6 py-3 bg-primary hover:bg-primary/90 transition-all shadow-md hover:shadow-lg text-white"
+                  asChild
+                >
                   <Link to="/explore">
                     <Search className="mr-2 h-5 w-5" />
                     Search Bikes
@@ -53,6 +66,10 @@ const Index = () => {
             </div>
           </div>
         </div>
+
+        {/* Floating Light Blobs for Motion */}
+        <div className="absolute top-10 left-10 w-48 h-48 bg-primary/25 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-10 right-16 w-56 h-56 bg-blue-400/25 rounded-full blur-3xl animate-float-delayed" />
       </section>
 
       {/* Trust Badges */}
@@ -158,8 +175,8 @@ const Index = () => {
               { name: "Cargo", icon: "📦" },
               { name: "Kids", icon: "👶" },
             ].map((category, index) => (
-              <Card 
-                key={category.name} 
+              <Card
+                key={category.name}
                 className="border-border shadow-soft hover:shadow-hover transition-all cursor-pointer group"
               >
                 <CardContent className="p-6 text-center">
@@ -177,9 +194,9 @@ const Index = () => {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <img 
-                src={bikesCollection} 
-                alt="Bike collection in shop" 
+              <img
+                src={bikesCollection}
+                alt="Bike collection in shop"
                 className="rounded-lg shadow-hover"
               />
             </div>
@@ -246,9 +263,9 @@ const Index = () => {
               </div>
             </div>
             <div>
-              <img 
-                src={happyRider} 
-                alt="Happy bike rider" 
+              <img
+                src={happyRider}
+                alt="Happy bike rider"
                 className="rounded-lg shadow-hover"
               />
             </div>
